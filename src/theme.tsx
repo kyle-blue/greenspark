@@ -1,12 +1,14 @@
 import { css } from '@emotion/react'
+import { createTheme } from '@mui/material'
 
-const GlobalStyle = css`
+export const GlobalStyle = css`
     body {
         margin: 0;
         font-family: 'Helvetica', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
+        color: #141414;
         background-color: #ececec;
     }
 
@@ -24,4 +26,41 @@ const GlobalStyle = css`
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     }
 `
-export default GlobalStyle
+
+export const palette = {
+    primary: '#3B755F',
+    secondary: '#F2EBDB',
+}
+
+export const muiTheme = createTheme({
+    palette: {
+        mode: 'light',
+        primary: {
+            main: palette.primary,
+        },
+        secondary: {
+            main: palette.secondary,
+        },
+    },
+    components: {
+        MuiTooltip: {
+            styleOverrides: {
+                tooltip: {
+                    padding: 0,
+                },
+            },
+        },
+        MuiFormLabel: {
+            styleOverrides: {
+                root: {
+                    color: palette.primary,
+                },
+            },
+        },
+    },
+    typography: {
+        button: {
+            textTransform: 'none',
+        },
+    },
+})

@@ -1,10 +1,9 @@
 import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
 import { Global } from '@emotion/react'
+import { ThemeProvider } from '@mui/material'
 import Root from './pages/Root'
-import GlobalStyle from './theme'
-import store from './redux'
+import { GlobalStyle, muiTheme } from './theme'
 
 const router = createBrowserRouter([
     {
@@ -15,10 +14,10 @@ const router = createBrowserRouter([
 
 function App(): React.ReactElement {
     return (
-        <Provider store={store}>
+        <ThemeProvider theme={muiTheme}>
             <Global styles={GlobalStyle} />
             <RouterProvider router={router} />
-        </Provider>
+        </ThemeProvider>
     )
 }
 
